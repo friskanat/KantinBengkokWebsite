@@ -1,3 +1,7 @@
+<?php
+  include('dbconnect.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,29 +75,26 @@
 
 
     <aside class = "bg-dark">
-    <form class="form-horizontal" method="post">
+    <form class="form-horizontal" method="post" action="do-login.php">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="nama">Username</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="username" required>
+                    <input type="text" class="form-control" id="nama" name="username" placeholder="username" required>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="harga">Password</label>
+                <label class="control-label col-sm-2" for="password">Password</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="harga" name="harga" placeholder="password" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
                 </div>
+            </div>
+            <div class="container text-center">
+                <h2>Login</h2>
+                <button class="btn btn-default btn-xl sr-button" type="submit">OK</a>
+
             </div>
         </form>
     </aside>
-
-    <div class="call-to-action bg-dark">
-        <div class="container text-center">
-            <h2>Login</h2>
-            <a class="btn btn-default btn-xl sr-button" href="dashboard.html">OK</a>
-
-        </div>
-    </div>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
