@@ -1,3 +1,7 @@
+<?php
+  include('dbconnect.php');
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,45 +84,19 @@
     <section class="no-padding">
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/promosi/nasi.jpg" class="portfolio-box">
-                        <img src="img/promosi/nasi.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Paket Nasi Goreng
-                                </div>
-                                <p>Dapatkan paket makan siang nasi goreng + es teh dengan 25 ribu saja!</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/promosi/mie.jpg" class="portfolio-box">
-                        <img src="img/promosi/mie.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Paket Mie Ayam
-                                </div>
-                                <p>Dapatkan paket makan siang mie ayam + es teh dengan 25 ribu saja!</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/promosi/3.jpg" class="portfolio-box">
-                        <img src="img/promosi/gelas.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Senin Ceria
-                                </div>
-                                <p> Setiap hari Senin, gratis air mineral gelas </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+              <?php
+                $res = $db->query("select * from promosi;");
+                while ($row = $res->fetch_assoc()){
+                  echo '<div class="col-lg-4 col-sm-6">';
+                  echo '<a href="img/promosi/'.$row[gambar].'" class="portfolio-box">';
+                  echo '<img src="img/promosi/'.$row[gambar].'" class="img-responsive" alt="">';
+                  echo '<div class="portfolio-box-caption">';
+                  echo '<div class="portfolio-box-caption-content">';
+                  echo '<div class="project-category text-faded">'.$row[judul].'</div>';
+                  echo '<p>'.$row[deskripsi].'</p>';
+                  echo '</div></div></a></div>';
+                }
+              ?>
             </div>
         </div>
     </section>
