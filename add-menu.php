@@ -1,6 +1,13 @@
 <?php
   include('dbconnect.php');
   include('sessioncheck.php');
+  if(isset($_POST[harga])){
+    if($db->query('insert into menu(nama,harga,tipe) values("'.$_POST[nama].'",'.$_POST[harga].',"'.$_POST[tipe].'");')){
+      echo "<script>alert('berhasil ditambahkan')</script>";
+    } else {
+      echo "<script>alert('terjadi kesalahan')</script>";
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +69,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h1>Tambah Menu</h1></center><br/>
-                        <form class="form-horizontal" method="post">
+                        <form class="form-horizontal" method="post" action="add-menu.php">
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="nama">Nama:</label>
                                 <div class="col-sm-10">
