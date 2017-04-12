@@ -1,3 +1,8 @@
+<?php
+  include('dbconnect.php');
+  include('sessioncheck.php');
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +26,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> KANTIN BENGKOK</a>        
+                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> KANTIN BENGKOK</a>
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -69,19 +74,24 @@
                         		</tr>
                         	</thead>
                         	<tbody>
-                        		<tr>
-                        			<td>Friska</td>
-                        			<td>12-Apr-17</td>
-                                    <td>1bh Ayam Goreng<br>
-                                    1bh Nasi Putih <br>
-                                    1bh Nasi Goreng </td>
-                                    <td>Labtek 5 ITB</td>
-                                    <td>021123</td>
-                        			<td><input type="checkbox"/></td>
-                        		</tr>
-                        		<tr>
-                        			<td colspan="3"><center>Menu x 3<br/>Lokasi: Labdas 3 Labtek 5 lantai 4</center></td>
-                        		</tr>
+                            <?php
+                              $res = $db->query("select * from pesanan;");
+                              while ($row = $res->fetch_assoc()){
+                                echo "<tr>";
+                                echo "<td>".$row[pemesan]."</td>";
+                                echo "<td>12-Apr-17</td>";
+                                $res2 = $db->query("select * from pesanansatuan join menu on (menu=id) where idpesanan=".$row[id].";");
+                                $str="";
+                                while ($row2 = $res2->fetch_assoc()){
+                                  $str = $str.$row2[jumlah]."bh"." ".$row2[nama]."<br/>";
+                                }
+                                echo "<td>".$str."</td>";
+                                echo "<td>".$row[lokasi]."</td>";
+                                echo "<td>".$row[telepon]."</td>";
+                                echo '<td><input type="checkbox"/></td>';
+                                echo "</tr>";
+                              }
+                             ?>
                         	</tbody>
                         </table>
                     </div>
