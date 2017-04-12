@@ -1,3 +1,8 @@
+<?php
+  include('dbconnect.php');
+  include('sessioncheck.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +26,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> KANTIN BENGKOK</a>        
+                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> KANTIN BENGKOK</a>
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -54,79 +59,23 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid xyz">
-        <button><a href = "edit-menu.html">Add new menu</button>
+        <button id="addMenu"><a href = "edit-menu.html">Add new menu</a></button>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Menu Prasmanan</h1>
-                        <label class="control-label col-sm-2" for="nama">1. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Ayam Goreng"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "15000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
+                        <center><h1>Menu Prasmanan</h1></center>
+                        <?php
+                          $res = $db->query("select * from menu where tipe='prasmanan'");
+                          $i=0;
+                          while ($row = $res->fetch_assoc()){
+                            $i++;
+                            echo '<label class="control-label col-sm-2" for="nama">'.$i. ' Nama Menu:</label>';
+                            echo '<input type="text" style:"width=50px" id="nama" name="nama" value = "'.$row[nama].'"required><br>';
+                            echo '<label class="control-label col-sm-2" for="nama">Harga: Rp</label>';
+                            echo '<input type="text" style:"width=50px" id="nama" name="nama" value = "'.$row[harga].'" required>';
+                            echo '<div class="row"><div class="col-sm-10"></div><div class="col-sm-1"><a href="#">Delete</a></div></div><br>';
+                          }
+                         ?>
 
-                        <label class="control-label col-sm-2" for="nama">2. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Ikan Goreng"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "15000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
-
-                        <label class="control-label col-sm-2" for="nama">3. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Tempe Goreng"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "2000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
-
-                        <label class="control-label col-sm-2" for="nama">4. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Tahu Goreng"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "2000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
-
-                        <label class="control-label col-sm-2" for="nama">5. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Sayur Kangkung"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "10000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
-
-                        <label class="control-label col-sm-2" for="nama">6. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Sayur Ciwis"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "10000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
-
-                        <label class="control-label col-sm-2" for="nama">7. Nama Menu:</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "Nasi Putih"required><br>
-                        <label class="control-label col-sm-2" for="nama">Harga: Rp</label>
-                        <input type="text" style:"width=50px" id="nama" name="nama" value = "5000" required>
-                        <div class="row">
-                            <div class="col-sm-10"></div>
-                            <div class="col-sm-1"><a href="#">Delete</a></div>
-                        </div>
-                        <br>
 
                         <center>
                             <h1>Menu A la Carte</h1>
@@ -182,6 +131,11 @@
     <script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sidebar_menu.js"></script>
+    <script>
+      document.getElementById("addMenu").onclick = function () {
+          location.href = "add-menu.php";
+      };
+    </script>
 </body>
 
 </html>

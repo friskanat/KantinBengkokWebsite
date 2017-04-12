@@ -1,3 +1,8 @@
+<?php
+  include('dbconnect.php');
+  include('sessioncheck.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +26,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> KANTIN BENGKOK</a>        
+                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> KANTIN BENGKOK</a>
                 </div><!-- navbar-header-->
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,8 +40,8 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
                 <li class="disabled">
-                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>admin</a>
-                </li>                    
+                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span><?php echo $_SESSION[username]; ?></a>
+                </li>
                 <li class="active">
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Dashboard</a>
                 </li>
@@ -47,7 +52,7 @@
                     <a href="daftar-menu.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-book fa-stack-1x "></i></span>Daftar Menu</a>
                 </li>
                 <li>
-                    <a href="index.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span>Sign Out</a>
+                    <a href="logout.php"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span>Sign Out</a>
                 </li>
             </ul>
         </div><!-- /#sidebar-wrapper -->
@@ -56,7 +61,7 @@
             <div class="container-fluid xyz">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Selamat Datang, Admin Kantin Bengkok</h1>
+                        <h1>Selamat Datang, <?php echo $_SESSION[nama]; ?></h1>
                     </div>
                 </div>
             </div>
